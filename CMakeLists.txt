@@ -24,16 +24,6 @@ EXTERNALPROJECT_ADD(
   BUILD_IN_SOURCE 1
 )
 EXTERNALPROJECT_ADD(
-  openssl
-  # URL http://www.openssl.org/source/openssl-1.0.2-latest.tar.gz
-  URL ${CMAKE_SOURCE_DIR}/vendor/openssl-1.0.2-latest.tar.gz
-  PATCH_COMMAND ${CMAKE_SOURCE_DIR}/patches/patch-manager.sh openssl
-  CONFIGURE_COMMAND ./config no-shared no-idea no-mdc2 no-rc5 --prefix=${CMAKE_BINARY_DIR}
-  BUILD_COMMAND make depend && make
-  INSTALL_COMMAND make install_sw
-  BUILD_IN_SOURCE 1
-)
-EXTERNALPROJECT_ADD(
   opencore-amr
   # URL http://downloads.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-0.1.5.tar.gz
   URL ${CMAKE_SOURCE_DIR}/vendor/opencore-amr-0.1.5.tar.gz
@@ -86,8 +76,8 @@ EXTERNALPROJECT_ADD(
 EXTERNALPROJECT_ADD(
   libtheora
   DEPENDS libogg
-  # URL http://downloads.xiph.org/releases/theora/libtheora-1.2.0alpha1.tar.gz
-  URL ${CMAKE_SOURCE_DIR}/vendor/libtheora-1.2.0alpha1.tar.gz
+  # URL http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.gz
+  URL ${CMAKE_SOURCE_DIR}/vendor/libtheora-1.1.1.tar.gz
   PATCH_COMMAND ${CMAKE_SOURCE_DIR}/patches/patch-manager.sh libtheora
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --disable-oggtest --disable-examples --with-ogg=${CMAKE_BINARY_DIR}
   BUILD_IN_SOURCE 1
@@ -145,21 +135,9 @@ EXTERNALPROJECT_ADD(
   BUILD_IN_SOURCE 1
 )
 EXTERNALPROJECT_ADD(
-  rtmpdump
-  DEPENDS zlib openssl
-  # GIT_REPOSITORY git://git.ffmpeg.org/rtmpdump
-  # UPDATE_COMMAND ""
-  URL ${CMAKE_SOURCE_DIR}/vendor/rtmpdump-2.4.tar.gz
-  PATCH_COMMAND ${CMAKE_SOURCE_DIR}/patches/patch-manager.sh rtmpdump
-  CONFIGURE_COMMAND ""
-  BUILD_COMMAND make PREFIX=${CMAKE_BINARY_DIR} SHARED= XCFLAGS=-I${CMAKE_BINARY_DIR}/include XLDFLAGS=-L${CMAKE_BINARY_DIR}/lib XLIBS=-ldl
-  INSTALL_COMMAND make PREFIX=${CMAKE_BINARY_DIR} SHARED= install
-  BUILD_IN_SOURCE 1
-)
-EXTERNALPROJECT_ADD(
   freetype
-  # URL http://download.savannah.gnu.org/releases/freetype/freetype-2.7.1.tar.gz
-  URL ${CMAKE_SOURCE_DIR}/vendor/freetype-2.7.1.tar.gz
+  # URL http://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz
+  URL ${CMAKE_SOURCE_DIR}/vendor/freetype-2.9.tar.gz
   PATCH_COMMAND ${CMAKE_SOURCE_DIR}/patches/patch-manager.sh freetype
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --enable-static --without-png
   INSTALL_COMMAND make install && ln -s ${CMAKE_BINARY_DIR}/include/freetype2 ${CMAKE_BINARY_DIR}/include/freetype2/freetype
@@ -202,11 +180,11 @@ EXTERNALPROJECT_ADD(
 )
 EXTERNALPROJECT_ADD(
   ffmpeg
-  DEPENDS yasm opencore-amr fdkaac lame libogg speex libvorbis libtheora opus xvidcore x264 x265 libvpx rtmpdump freetype libass openssl
-  # URL http://www.ffmpeg.org/releases/ffmpeg-3.3.3.tar.bz2
-  URL ${CMAKE_SOURCE_DIR}/vendor/ffmpeg-3.3.3.tar.bz2
+  DEPENDS yasm opencore-amr fdkaac lame libogg speex libvorbis libtheora opus xvidcore x264 x265 libvpx freetype libass
+  # URL https://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2
+  URL ${CMAKE_SOURCE_DIR}/vendor/ffmpeg-snapshot.tar.bz2
   PATCH_COMMAND ${CMAKE_SOURCE_DIR}/patches/patch-manager.sh ffmpeg
-  CONFIGURE_COMMAND PATH=$ENV{PATH} PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH} ./configure --prefix=${CMAKE_BINARY_DIR} --datadir=${CMAKE_BINARY_DIR}/etc --disable-shared --enable-static --enable-gpl --enable-version3 --enable-nonfree --disable-doc --disable-debug --disable-ffplay --disable-ffserver --disable-outdevs --enable-runtime-cpudetect --extra-cflags=-I${CMAKE_BINARY_DIR}/include\ --static --extra-ldflags=-L${CMAKE_BINARY_DIR}/lib --extra-libs=-lstdc++\ -lexpat\ -ldl --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libfdk-aac --enable-libmp3lame --enable-libspeex --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-libvpx --enable-libopus --enable-librtmp --enable-libfreetype --enable-libass --enable-openssl
+  CONFIGURE_COMMAND PATH=$ENV{PATH} PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH} ./configure --prefix=${CMAKE_BINARY_DIR} --datadir=${CMAKE_BINARY_DIR}/etc --disable-shared --enable-static --enable-gpl --enable-version3 --enable-nonfree --disable-doc --disable-debug --disable-ffplay --disable-outdevs --enable-runtime-cpudetect --extra-cflags=-I${CMAKE_BINARY_DIR}/include --extra-ldflags=-L${CMAKE_BINARY_DIR}/lib --extra-libs=-lstdc++\ -lexpat\ -ldl --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libfdk-aac --enable-libmp3lame --enable-libspeex --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-libvpx --enable-libopus --enable-libfreetype --enable-libass
   BUILD_COMMAND PATH=$ENV{PATH} make
   BUILD_IN_SOURCE 1
 )
