@@ -127,8 +127,8 @@ EXTERNALPROJECT_ADD(
 EXTERNALPROJECT_ADD(
   libvpx
   DEPENDS yasm
-  # URL http://storage.googleapis.com/downloads.webmproject.org/releases/webm/libvpx-1.6.1.tar.bz2
-  URL ${PROJECT_SOURCE_DIR}/vendor/libvpx-1.6.1.tar.bz2
+  URL https://github.com/webmproject/libvpx/archive/v1.8.1.tar.gz
+  # URL ${PROJECT_SOURCE_DIR}/vendor/libvpx-1.6.1.tar.bz2
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh libvpx
   CONFIGURE_COMMAND PATH=$ENV{PATH} ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared
   BUILD_COMMAND PATH=$ENV{PATH} make
