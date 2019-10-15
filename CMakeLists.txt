@@ -9,121 +9,126 @@ set(ENV{PKG_CONFIG_PATH} ${CMAKE_BINARY_DIR}/lib/pkgconfig)
 
 externalproject_add(
   yasm
-  # URL http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
-  URL ${PROJECT_SOURCE_DIR}/vendor/yasm-1.3.0.tar.gz
+  URL https://github.com/yasm/yasm/releases/download/v1.3.0/yasm-1.3.0.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh yasm
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR}
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   zlib
-  # URL https://github.com/madler/zlib/archive/v1.2.11.tar.gz
-  URL ${PROJECT_SOURCE_DIR}/vendor/zlib-v1.2.11.tar.gz
+  URL https://github.com/madler/zlib/archive/v1.2.11.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh zlib
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --static
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   opencore-amr
-  # URL http://downloads.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-0.1.5.tar.gz
-  URL ${PROJECT_SOURCE_DIR}/vendor/opencore-amr-0.1.5.tar.gz
+  URL http://downloads.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-0.1.5.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh opencore-amr
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   fdkaac
-  # URL http://downloads.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-0.1.5.tar.gz
-  URL ${PROJECT_SOURCE_DIR}/vendor/fdk-aac-0.1.5.tar.gz
+  URL http://downloads.sourceforge.net/project/opencore-amr/fdk-aac/fdk-aac-2.0.1.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh fdkaac
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --enable-static
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   lame
-  # URL http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz
-  URL ${PROJECT_SOURCE_DIR}/vendor/lame-3.99.5.tar.gz
+  URL http://downloads.sourceforge.net/project/lame/lame/3.100/lame-3.100.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh lame
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   libogg
-  # URL http://downloads.xiph.org/releases/ogg/libogg-1.3.2.tar.gz
+  URL http://downloads.xiph.org/releases/ogg/libogg-1.3.4.tar.gz
+  URL_HASH SHA256=fe5670640bd49e828d64d2879c31cb4dde9758681bb664f9bdbf159a01b0c76e
   URL ${PROJECT_SOURCE_DIR}/vendor/libogg-1.3.2.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh libogg
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   speex
   DEPENDS libogg
-  # URL http://downloads.xiph.org/releases/speex/speex-1.2.0.tar.gz
+  URL http://downloads.xiph.org/releases/speex/speex-1.2.0.tar.gz
+  URL_HASH SHA256=eaae8af0ac742dc7d542c9439ac72f1f385ce838392dc849cae4536af9210094
   URL ${PROJECT_SOURCE_DIR}/vendor/speex-1.2.0.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh speex
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --enable-sse  --disable-oggtest --with-ogg=${CMAKE_BINARY_DIR}
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   libvorbis
   DEPENDS libogg
-  # URL http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.5.tar.gz
+  URL http://downloads.xiph.org/releases/vorbis/libvorbis-1.3.6.tar.gz
+  URL_HASH SHA256=6ed40e0241089a42c48604dc00e362beee00036af2d8b3f46338031c9e0351cb
   URL ${PROJECT_SOURCE_DIR}/vendor/libvorbis-1.3.5.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh libvorbis
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --disable-oggtest
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   libtheora
   DEPENDS libogg
-  # URL http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.gz
-  URL ${PROJECT_SOURCE_DIR}/vendor/libtheora-1.1.1.tar.gz
+  URL http://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh libtheora
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --disable-oggtest --disable-examples --with-ogg=${CMAKE_BINARY_DIR}
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   opus
-  # URL http://downloads.xiph.org/releases/opus/opus-1.1.4.tar.gz
-  URL ${PROJECT_SOURCE_DIR}/vendor/opus-1.1.4.tar.gz
+  URL https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh opus
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --disable-doc
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   xvidcore
   DEPENDS yasm
-  # URL http://downloads.xvid.org/downloads/xvidcore-1.3.4.tar.gz
-  URL ${PROJECT_SOURCE_DIR}/vendor/xvidcore-1.3.4.tar.gz
+  URL https://downloads.xvid.com/downloads/xvidcore-1.3.5.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh xvidcore
   CONFIGURE_COMMAND cd build/generic && PATH=$ENV{PATH} ./configure --prefix=${CMAKE_BINARY_DIR}
   BUILD_COMMAND cd build/generic && PATH=$ENV{PATH} make
   INSTALL_COMMAND cd build/generic && make install
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   x264
   DEPENDS yasm
-  # GIT_REPOSITORY git://git.videolan.org/x264.git
-  # UPDATE_COMMAND ""
-  URL ${PROJECT_SOURCE_DIR}/vendor/x264-snapshot-20170716-2245-stable.tar.bz2
+  URL https://download.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-20191015-2245-stable.tar.bz2
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh x264
   CONFIGURE_COMMAND PATH=$ENV{PATH} ./configure --prefix=${CMAKE_BINARY_DIR} --enable-static
   BUILD_COMMAND PATH=$ENV{PATH} make
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   x265
   DEPENDS yasm
-  # DOWNLOAD_COMMAND hg clone --insecure https://bitbucket.org/multicoreware/x265
-  # UPDATE_COMMAND hg update -r stable
-  URL ${PROJECT_SOURCE_DIR}/vendor/x265_2.5.tar.gz
+  URL https://bitbucket.org/multicoreware/x265/downloads/x265_3.2.tar.gz
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh x265
-  CONFIGURE_COMMAND cd build/linux && PATH=$ENV{PATH} cmake -G "Unix Makefiles" -D CMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR} -D ENABLE_CLI:BOOL=OFF -D ENABLE_SHARED:BOOL=OFF ../../source
-  BUILD_COMMAND cd build/linux && PATH=$ENV{PATH} make
-  INSTALL_COMMAND cd build/linux && PATH=$ENV{PATH} make install
-  BUILD_IN_SOURCE 1
+  SOURCE_SUBDIR source
+  CMAKE_CACHE_ARGS
+      -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_BINARY_DIR}
+      -DENABLE_CLI:BOOL=OFF
+      -DENABLE_SHARED:BOOL=OFF
 )
+
 externalproject_add(
   libvpx
   DEPENDS yasm
@@ -134,6 +139,7 @@ externalproject_add(
   BUILD_COMMAND PATH=$ENV{PATH} make
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   freetype
   # URL http://download.savannah.gnu.org/releases/freetype/freetype-2.9.tar.gz
@@ -143,6 +149,7 @@ externalproject_add(
   INSTALL_COMMAND make install && ln -s ${CMAKE_BINARY_DIR}/include/freetype2 ${CMAKE_BINARY_DIR}/include/freetype2/freetype
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   fribidi
   # URL http://fribidi.org/download/fribidi-0.19.7.tar.bz2
@@ -151,6 +158,7 @@ externalproject_add(
   CONFIGURE_COMMAND ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --enable-static
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   expat
   # URL http://downloads.sourceforge.net/project/expat/expat/2.2.0/expat-2.2.0.tar.bz2
@@ -159,6 +167,7 @@ externalproject_add(
   CONFIGURE_COMMAND PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH} ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --enable-static
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   fontconfig
   DEPENDS freetype expat
@@ -168,6 +177,7 @@ externalproject_add(
   CONFIGURE_COMMAND PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH} ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --enable-static
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   libass
   DEPENDS yasm freetype fribidi fontconfig
@@ -178,16 +188,18 @@ externalproject_add(
   BUILD_COMMAND PATH=$ENV{PATH} make
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   ffmpeg
   DEPENDS yasm opencore-amr fdkaac lame libogg speex libvorbis libtheora opus xvidcore x264 x265 libvpx freetype libass
-  # URL https://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2
-  URL ${PROJECT_SOURCE_DIR}/vendor/ffmpeg-snapshot.tar.bz2
+  URL https://github.com/FFmpeg/FFmpeg/archive/n4.2.1.tar.gz
+  # URL ${PROJECT_SOURCE_DIR}/vendor/ffmpeg-snapshot.tar.bz2
   PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh ffmpeg
-  CONFIGURE_COMMAND PATH=$ENV{PATH} PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH} ./configure --prefix=${CMAKE_BINARY_DIR} --datadir=${CMAKE_BINARY_DIR}/etc --disable-shared --enable-static --enable-gpl --enable-version3 --enable-nonfree --disable-doc --disable-debug --disable-ffplay --disable-outdevs --enable-runtime-cpudetect --pkg-config-flags=--static --extra-cflags=-I${CMAKE_BINARY_DIR}/include --extra-ldflags=-L${CMAKE_BINARY_DIR}/lib --extra-libs=-lstdc++\ -lexpat\ -ldl --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libfdk-aac --enable-libmp3lame --enable-libspeex --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-libvpx --enable-libopus --enable-libfreetype --enable-libass --enable-pthreads --enable-postproc
+  CONFIGURE_COMMAND PATH=$ENV{PATH} PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH} ./configure --prefix=${CMAKE_BINARY_DIR} --datadir=${CMAKE_BINARY_DIR}/etc --disable-shared --enable-static --enable-gpl --enable-version3 --enable-nonfree --disable-doc --disable-debug --disable-ffplay --disable-outdevs --enable-runtime-cpudetect --pkg-config-flags=--static --extra-cflags="-I${CMAKE_BINARY_DIR}/include -fno-stack-check" --extra-ldflags=-L${CMAKE_BINARY_DIR}/lib --extra-libs=-lstdc++\ -lexpat\ -ldl --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libfdk-aac --enable-libmp3lame --enable-libspeex --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-libvpx --enable-libopus --enable-libfreetype --enable-libass --enable-pthreads --enable-postproc
   BUILD_COMMAND PATH=$ENV{PATH} make
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   libpng
   DEPENDS zlib
@@ -197,6 +209,7 @@ externalproject_add(
   CONFIGURE_COMMAND CFLAGS=-I${CMAKE_BINARY_DIR}/include CPPFLAGS=-I${CMAKE_BINARY_DIR}/include LDFLAGS=-L${CMAKE_BINARY_DIR}/lib ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --enable-static
   BUILD_IN_SOURCE 1
 )
+
 externalproject_add(
   frmxtract
   DEPENDS ffmpeg libpng
