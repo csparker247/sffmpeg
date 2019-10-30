@@ -213,7 +213,7 @@ externalproject_add(
   CONFIGURE_COMMAND
       PATH=$ENV{PATH}
       PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH}
-      ./configure --prefix=${CMAKE_BINARY_DIR} --datadir=${CMAKE_BINARY_DIR}/etc --disable-shared --enable-static --enable-gpl --enable-version3 --enable-nonfree --disable-doc --disable-debug --disable-ffplay --disable-outdevs --enable-runtime-cpudetect --pkg-config-flags=--static --extra-cflags=-I${CMAKE_BINARY_DIR}/include\ -fno-stack-check --extra-ldflags=-L${CMAKE_BINARY_DIR}/lib --extra-libs=-lstdc++\ -lexpat\ -ldl --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libfdk-aac --enable-libmp3lame --enable-libspeex --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-libvpx --enable-libopus --enable-libfreetype --enable-libass --enable-pthreads --enable-postproc
+      ./configure --prefix=${CMAKE_BINARY_DIR} --datadir=${CMAKE_BINARY_DIR}/etc --disable-shared --enable-static --enable-gpl --enable-version3 --enable-nonfree --disable-doc --disable-debug --disable-ffplay --disable-outdevs --enable-runtime-cpudetect --pkg-config-flags=--static --extra-cflags=-I${CMAKE_BINARY_DIR}/include --extra-ldflags=-L${CMAKE_BINARY_DIR}/lib --extra-libs=-lstdc++\ -lexpat\ -ldl --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libfdk-aac --enable-libmp3lame --enable-libspeex --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libx265 --enable-libxvid --enable-libvpx --enable-libopus --enable-libfreetype --enable-libass --enable-pthreads --enable-postproc
   BUILD_COMMAND PATH=$ENV{PATH} make
   BUILD_IN_SOURCE TRUE
   DOWNLOAD_NO_PROGRESS TRUE
