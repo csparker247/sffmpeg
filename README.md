@@ -12,11 +12,12 @@ multiple builds of FFmpeg on the same host.
 
 `sffmpeg` requires:
 
-- a POSIX-compliant system (virtually any system today).
-- a recent version of [gcc](http://gcc.gnu.org/).
-- a recent version of [cmake](http://www.cmake.org/) (2.8.8+, with proper git and mercurial bindings).
-- the [autoconf](http://www.gnu.org/software/autoconf/) and [libtool](http://www.gnu.org/software/libtool/) utilities.
-- the [pkg-config](http://www.freedesktop.org/wiki/Software/pkg-config) utility.
+- a POSIX-compliant system
+- a recent version of [cmake](http://www.cmake.org/) (3.5+, with proper git and mercurial bindings).
+- [autoconf](http://www.gnu.org/software/autoconf/)
+- [libtool](http://www.gnu.org/software/libtool/)
+- automake
+- [pkg-config](http://www.freedesktop.org/wiki/Software/pkg-config) utility.
 
 ## Usage
 
@@ -61,4 +62,3 @@ The `ffmpeg`, `ffprobe` and `frmxtract` binaries will be installed by the packag
     Selecting previously unselected package sffmpeg.
     Unpacking sffmpeg (from sffmpeg_3.0_amd64.deb) ...
     Setting up sffmpeg (3.0) ...
-
