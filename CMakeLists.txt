@@ -188,7 +188,7 @@ externalproject_add(
 externalproject_add(
     fontconfig
     DEPENDS freetype expat
-    URL https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.13.93.tar.gz
+    URL https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.13.92.tar.gz
     PATCH_COMMAND ${PROJECT_SOURCE_DIR}/patches/patch-manager.sh fontconfig
     CONFIGURE_COMMAND PKG_CONFIG_PATH=$ENV{PKG_CONFIG_PATH} ./configure --prefix=${CMAKE_BINARY_DIR} --disable-shared --enable-static
     BUILD_IN_SOURCE TRUE
